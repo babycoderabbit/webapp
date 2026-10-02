@@ -9,8 +9,37 @@ import prisma from '@/lib/prisma'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Personal OS',
-  description: 'Self-contained personal operating system',
+  title: {
+    default: 'Personal OS | Your Command Center',
+    template: '%s | Personal OS',
+  },
+  description: 'A self-contained personal operating system to manage habits, tasks, studies, and finances seamlessly.',
+  keywords: ['productivity', 'dashboard', 'habits', 'planner', 'personal OS', 'student'],
+  authors: [{ name: 'Admin' }],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  openGraph: {
+    title: 'Personal OS | Your Command Center',
+    description: 'A self-contained personal operating system to manage habits, tasks, studies, and finances seamlessly.',
+    url: 'https://webapp.vercel.app',
+    siteName: 'Personal OS',
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Personal OS',
+    description: 'A self-contained personal operating system to manage habits, tasks, studies, and finances seamlessly.',
+  },
 }
 
 export const viewport = {
