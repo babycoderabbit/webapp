@@ -35,7 +35,7 @@ export function LectureNoteItem({ note, courses }: { note: LectureNote, courses:
 
   return (
     <div className="p-4 bg-white border border-black flex flex-col gap-3 hover:translate-x-1 hover:-translate-y-1 hover:shadow-lg transition-all group">
-      <div className="flex justify-between items-start">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div className="flex flex-col cursor-pointer flex-1" onClick={() => setIsExpanded(!isExpanded)}>
           <div className="flex items-center gap-2">
             <FileText size={18} />
@@ -44,7 +44,7 @@ export function LectureNoteItem({ note, courses }: { note: LectureNote, courses:
           </div>
           <span className="text-xs font-bold tracking-widest uppercase mt-1 inline-block w-fit border border-black px-2 py-1">{note.course?.code}</span>
         </div>
-        <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="flex gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity self-end sm:self-auto flex-shrink-0">
           <button onClick={() => setIsEditing(true)} className="p-2 border border-black hover:bg-black hover:text-white transition-colors cursor-pointer"><Edit2 size={16}/></button>
           <form action={async () => { await deleteLectureNote(note.id) }}>
             <button type="submit" className="p-2 border border-black hover:bg-black hover:text-white transition-colors cursor-pointer"><Trash2 size={16}/></button>

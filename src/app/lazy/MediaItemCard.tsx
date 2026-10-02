@@ -49,7 +49,7 @@ export function MediaItemCard({ item, onDelete, onEdit }: { item: MediaItem, onD
       <div>
         <div className="flex justify-between items-start mb-2">
           <span className="text-[10px] font-black uppercase tracking-widest px-2 py-1 border border-black bg-white text-black">{item.status}</span>
-          <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-all">
+          <div className="flex gap-1 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-all">
             <button onClick={() => setIsEditing(true)} className="p-1.5 border border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer">
               <Edit2 size={14}/>
             </button>

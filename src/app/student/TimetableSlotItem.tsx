@@ -56,14 +56,14 @@ export function TimetableSlotItem({ slot, courses }: { slot: TimetableSlot, cour
   }
 
   return (
-    <div className="group flex justify-between items-center bg-white p-4 border border-black hover:-translate-y-1 hover:translate-x-1 hover:shadow-lg transition-all">
-      <div>
-        <div className="font-extrabold text-black uppercase tracking-tight">{slot.course?.code}</div>
-        <div className="text-sm font-bold text-black mt-1 uppercase tracking-widest">{slot.startTime} - {slot.endTime} • {slot.roomOrLink || 'TBA'}</div>
+    <div className="group flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 bg-white p-4 border border-black hover:-translate-y-1 hover:translate-x-1 hover:shadow-lg transition-all">
+      <div className="min-w-0 w-full">
+        <div className="font-extrabold text-black uppercase tracking-tight break-words">{slot.course?.code}</div>
+        <div className="text-sm font-bold text-black mt-1 uppercase tracking-widest break-words">{slot.startTime} - {slot.endTime} • {slot.roomOrLink || 'TBA'}</div>
       </div>
-      <div className="flex gap-2">
-        <button type="button" onClick={() => setIsEditing(true)} className="p-2 border border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer opacity-0 group-hover:opacity-100"><Edit2 size={16}/></button>
-        <button type="button" onClick={async () => { await deleteTimetableSlot(slot.id) }} className="p-2 border border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer opacity-0 group-hover:opacity-100"><Trash2 size={16}/></button>
+      <div className="flex gap-2 self-end sm:self-auto flex-shrink-0">
+        <button type="button" onClick={() => setIsEditing(true)} className="p-2 border border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer opacity-100 md:opacity-0 md:group-hover:opacity-100"><Edit2 size={16}/></button>
+        <button type="button" onClick={async () => { await deleteTimetableSlot(slot.id) }} className="p-2 border border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer opacity-100 md:opacity-0 md:group-hover:opacity-100"><Trash2 size={16}/></button>
       </div>
     </div>
   )
