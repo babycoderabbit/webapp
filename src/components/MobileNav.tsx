@@ -73,7 +73,7 @@ export function MobileNav() {
       </div>
 
       {/* Floating Bottom Nav */}
-      <div className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 w-[92%] max-w-[380px] bg-white/90 backdrop-blur-xl border border-black/10 p-2 flex justify-between items-center shadow-2xl rounded-full z-50">
+      <div className="md:hidden fixed bottom-6 left-1/2 -translate-x-1/2 w-max bg-white/90 backdrop-blur-xl border border-black/10 p-1.5 flex justify-center items-center shadow-2xl rounded-full z-50 gap-1">
         {mainNav.map(item => {
           const isActive = pathname?.startsWith(item.href)
           const Icon = item.icon
@@ -83,12 +83,15 @@ export function MobileNav() {
               href={item.href} 
               onClick={() => setMoreOpen(false)}
               className={cn(
-                "py-2 px-1 transition-all duration-300 flex flex-col items-center justify-center gap-1 flex-1 min-w-0 rounded-full",
-                isActive ? "text-black bg-black/10" : "text-black/60 hover:text-black hover:bg-black/5"
+                "h-[52px] transition-all duration-300 flex flex-col items-center justify-center rounded-full relative overflow-hidden",
+                isActive ? "w-[72px] text-black bg-black/5" : "w-[52px] text-black/60 hover:text-black hover:bg-black/5"
               )}
             >
-              <Icon size={22} className={cn("transition-transform flex-shrink-0", isActive && "scale-110")} />
-              <span className={cn("text-[9px] font-black uppercase tracking-widest transition-all truncate w-full text-center mt-0.5", isActive ? "opacity-100" : "opacity-0 translate-y-1")}>
+              <Icon size={20} className={cn("transition-transform flex-shrink-0 duration-300", isActive ? "-translate-y-2.5 scale-110" : "translate-y-0")} />
+              <span className={cn(
+                "text-[9px] font-bold uppercase tracking-wide absolute bottom-1.5 left-0 w-full text-center transition-all duration-300", 
+                isActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+              )}>
                 {item.name}
               </span>
             </Link>
@@ -98,12 +101,19 @@ export function MobileNav() {
         <button 
           onClick={() => setMoreOpen(!moreOpen)}
           className={cn(
-            "py-2 px-1 transition-all duration-300 flex flex-col items-center justify-center gap-1 flex-1 min-w-0 rounded-full",
-            moreOpen ? "text-black bg-black/10" : "text-black/60 hover:text-black hover:bg-black/5"
+            "h-[52px] transition-all duration-300 flex flex-col items-center justify-center rounded-full relative overflow-hidden",
+            moreOpen ? "w-[72px] text-black bg-black/5" : "w-[52px] text-black/60 hover:text-black hover:bg-black/5"
           )}
         >
-          {moreOpen ? <X size={22} className="flex-shrink-0" /> : <Menu size={22} className="flex-shrink-0" />}
-          <span className={cn("text-[9px] font-black uppercase tracking-widest transition-all truncate w-full text-center mt-0.5", moreOpen ? "opacity-100" : "opacity-0 translate-y-1")}>
+          {moreOpen ? (
+            <X size={20} className="transition-transform flex-shrink-0 duration-300 -translate-y-2.5 scale-110" />
+          ) : (
+            <Menu size={20} className="transition-transform flex-shrink-0 duration-300 translate-y-0" />
+          )}
+          <span className={cn(
+            "text-[9px] font-bold uppercase tracking-wide absolute bottom-1.5 left-0 w-full text-center transition-all duration-300", 
+            moreOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
+          )}>
             {moreOpen ? 'Close' : 'More'}
           </span>
         </button>
