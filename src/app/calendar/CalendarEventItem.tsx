@@ -20,9 +20,9 @@ export function CalendarEventItem({ event }: { event: CalendarEvent }) {
       }} className="flex flex-col gap-3 p-4 bg-white border border-black shadow-lg">
         <input type="text" name="title" defaultValue={event.title} required className="border border-black p-2 font-bold focus:outline-none" />
         <input type="text" name="description" defaultValue={event.description || ''} placeholder="Description" className="border border-black p-2 font-bold focus:outline-none" />
-        <div className="flex gap-2">
-          <input type="date" name="startDate" defaultValue={new Date(event.startDate).toISOString().split('T')[0]} required className="border border-black p-2 font-bold focus:outline-none flex-1" />
-          <input type="date" name="endDate" defaultValue={new Date(event.endDate).toISOString().split('T')[0]} required className="border border-black p-2 font-bold focus:outline-none flex-1" />
+        <div className="flex flex-col sm:flex-row gap-2">
+          <input type="date" name="startDate" defaultValue={new Date(event.startDate).toISOString().split('T')[0]} required className="border border-black p-2 font-bold focus:outline-none flex-1 min-w-0" />
+          <input type="date" name="endDate" defaultValue={new Date(event.endDate).toISOString().split('T')[0]} required className="border border-black p-2 font-bold focus:outline-none flex-1 min-w-0" />
         </div>
         <label className="flex items-center gap-2 font-black uppercase text-sm cursor-pointer">
           <input type="checkbox" name="isHoliday" defaultChecked={event.isHoliday} className="w-5 h-5 accent-black border border-black cursor-pointer" />
@@ -37,20 +37,20 @@ export function CalendarEventItem({ event }: { event: CalendarEvent }) {
   }
 
   return (
-    <div className={`p-4 border border-black flex flex-col gap-3 hover:translate-x-1 hover:-translate-y-1 hover:shadow-lg transition-all group ${event.isHoliday ? 'bg-black text-white' : 'bg-white text-black'}`}>
-      <div className="flex justify-between items-start">
-        <div className="flex flex-col">
-          <div className="flex items-center gap-2">
-            <CalendarIcon size={18} />
-            <span className="font-black text-lg uppercase">{event.title}</span>
-            {event.isHoliday && <span className={`text-[10px] font-black uppercase tracking-widest border px-2 py-1 ${event.isHoliday ? 'border-white' : 'border-black'}`}>Holiday</span>}
+    <div className={`p-4 border border-black hover:translate-x-1 hover:-translate-y-1 hover:shadow-lg transition-all group ${event.isHoliday ? 'bg-black text-white' : 'bg-white text-black'}`}>
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div className="flex flex-col min-w-0 w-full">
+          <div className="flex items-center gap-2 flex-wrap">
+            <CalendarIcon size={18} className="flex-shrink-0" />
+            <span className="font-black text-lg uppercase break-words">{event.title}</span>
+            {event.isHoliday && <span className={`text-[10px] font-black uppercase tracking-widest border px-2 py-1 flex-shrink-0 ${event.isHoliday ? 'border-white' : 'border-black'}`}>Holiday</span>}
           </div>
-          <span className="text-xs font-bold tracking-widest mt-1" suppressHydrationWarning>
+          <span className="text-xs font-bold tracking-widest mt-1 break-words" suppressHydrationWarning>
             {new Date(event.startDate).toLocaleDateString()} - {new Date(event.endDate).toLocaleDateString()}
           </span>
-          {event.description && <span className="text-sm font-bold mt-2">{event.description}</span>}
+          {event.description && <span className="text-sm font-bold mt-2 break-words">{event.description}</span>}
         </div>
-        <div className="flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="flex gap-2 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity self-end sm:self-auto flex-shrink-0">
           <button onClick={() => setIsEditing(true)} className={`p-2 border transition-colors cursor-pointer ${event.isHoliday ? 'border-white hover:bg-white hover:text-black' : 'border-black hover:bg-black hover:text-white'}`}><Edit2 size={16}/></button>
           <form action={async () => { await deleteCalendarEvent(event.id) }}>
             <button type="submit" className={`p-2 border transition-colors cursor-pointer ${event.isHoliday ? 'border-white hover:bg-white hover:text-black' : 'border-black hover:bg-black hover:text-white'}`}><Trash2 size={16}/></button>
