@@ -15,6 +15,14 @@ export async function deleteUser(userId: string) {
   revalidatePath('/admin')
 }
 
+export async function updateUserRole(userId: string, role: 'ADMIN' | 'USER') {
+  await prisma.user.update({
+    where: { id: userId },
+    data: { role }
+  })
+  revalidatePath('/admin')
+}
+
 export async function makeFirstUserAdmin() {
   const user = await prisma.user.findFirst()
   if (user) {

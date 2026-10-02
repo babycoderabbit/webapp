@@ -1,7 +1,7 @@
 import prisma from '@/lib/prisma'
 import { auth } from '@/auth'
 import { redirect } from 'next/navigation'
-import { verifyUser, deleteUser } from '@/app/actions/admin'
+import { updateUserRole, deleteUser } from '@/app/actions/admin'
 import { ShieldCheck, ShieldAlert, Trash2, Users } from 'lucide-react'
 
 export default async function AdminPage() {
@@ -47,7 +47,6 @@ export default async function AdminPage() {
                 <th className="py-3 px-2">Identity</th>
                 <th className="py-3 px-2">Contact</th>
                 <th className="py-3 px-2">Clearance</th>
-                <th className="py-3 px-2">Status</th>
                 <th className="py-3 px-2 text-right">Actions</th>
               </tr>
             </thead>
@@ -61,15 +60,12 @@ export default async function AdminPage() {
                       {u.role}
                     </span>
                   </td>
-                  <td className="py-4 px-2">
-                    <span className={`px-3 py-1 rounded-full text-[10px] font-black uppercase tracking-wider ${u.isVerified ? 'bg-primary/10 text-primary border border-primary/20' : 'bg-red-500/10 text-red-500 border border-red-500/20'}`}>
-                      {u.isVerified ? 'Verified' : 'Pending'}
-                    </span>
-                  </td>
                   <td className="py-4 px-2 flex justify-end gap-2">
-                    {!u.isVerified && (
-                      <form action={async () => { 'use server'; await verifyUser(u.id) }}>
-                        <button className="text-[10px] font-bold uppercase tracking-wider bg-emerald-500/20 text-emerald-400 px-3 py-1.5 rounded-lg hover:bg-emerald-500 hover:text-background transition-colors">Authorize</button>
+                    {u.id !== currentUser.id && (
+                      <form action={async () => { 'use server'; await updateUserRole(u.id, u.role === 'ADMIN' ? 'USER' : 'ADMIN') }}>
+                        <button className="text-[10px] font-bold uppercase tracking-wider bg-primary/10 text-primary px-3 py-1.5 rounded-lg border border-primary/20 hover:bg-primary hover:text-background transition-colors">
+                          {u.role === 'ADMIN' ? 'Demote' : 'Make Admin'}
+                        </button>
                       </form>
                     )}
                     {u.id !== currentUser.id && (
