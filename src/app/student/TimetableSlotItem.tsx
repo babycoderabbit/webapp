@@ -32,38 +32,38 @@ export function TimetableSlotItem({ slot, courses }: { slot: TimetableSlot, cour
 
   if (isEditing) {
     return (
-      <form onSubmit={handleSave} className="flex flex-col gap-3 p-4 border-2 border-black bg-white shadow-[4px_4px_0_0_#000000]">
+      <form onSubmit={handleSave} className="flex flex-col gap-3 p-4 border border-black bg-white shadow-lg">
         <div className="flex gap-2">
-          <select value={courseId} onChange={e => setCourseId(e.target.value)} required className="flex-1 border-2 border-black p-2 font-bold bg-white text-black outline-none">
+          <select value={courseId} onChange={e => setCourseId(e.target.value)} required className="flex-1 border border-black p-2 font-bold bg-white text-black outline-none">
             {courses.map((c: TimetableSlot) => <option key={c.id} value={c.id}>{c.code}</option>)}
           </select>
-          <select value={dayOfWeek} onChange={e => setDayOfWeek(parseInt(e.target.value))} required className="flex-1 border-2 border-black p-2 font-bold bg-white text-black outline-none">
+          <select value={dayOfWeek} onChange={e => setDayOfWeek(parseInt(e.target.value))} required className="flex-1 border border-black p-2 font-bold bg-white text-black outline-none">
             {days.map((d, i) => <option key={i} value={i}>{d}</option>)}
           </select>
         </div>
         <div className="flex gap-2">
-          <input type="time" value={startTime} onChange={e => setStartTime(e.target.value)} required className="flex-1 border-2 border-black p-2 font-bold bg-white text-black outline-none" />
-          <input type="time" value={endTime} onChange={e => setEndTime(e.target.value)} required className="flex-1 border-2 border-black p-2 font-bold bg-white text-black outline-none" />
+          <input type="time" value={startTime} onChange={e => setStartTime(e.target.value)} required className="flex-1 border border-black p-2 font-bold bg-white text-black outline-none" />
+          <input type="time" value={endTime} onChange={e => setEndTime(e.target.value)} required className="flex-1 border border-black p-2 font-bold bg-white text-black outline-none" />
         </div>
-        <input type="text" value={roomOrLink} onChange={e => setRoomOrLink(e.target.value)} placeholder="Room/Link" className="border-2 border-black p-2 font-bold bg-white text-black outline-none" />
+        <input type="text" value={roomOrLink} onChange={e => setRoomOrLink(e.target.value)} placeholder="Room/Link" className="border border-black p-2 font-bold bg-white text-black outline-none" />
         
         <div className="flex gap-2 justify-end mt-2">
-          <button type="submit" className="p-2 border-2 border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer"><Check size={18} /></button>
-          <button type="button" onClick={() => setIsEditing(false)} className="p-2 border-2 border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer"><X size={18} /></button>
+          <button type="submit" className="p-2 border border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer"><Check size={18} /></button>
+          <button type="button" onClick={() => setIsEditing(false)} className="p-2 border border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer"><X size={18} /></button>
         </div>
       </form>
     )
   }
 
   return (
-    <div className="group flex justify-between items-center bg-white p-4 border-2 border-black hover:-translate-y-1 hover:translate-x-1 hover:shadow-[4px_4px_0_0_#000000] transition-all">
+    <div className="group flex justify-between items-center bg-white p-4 border border-black hover:-translate-y-1 hover:translate-x-1 hover:shadow-lg transition-all">
       <div>
         <div className="font-extrabold text-black uppercase tracking-tight">{slot.course?.code}</div>
         <div className="text-sm font-bold text-black mt-1 uppercase tracking-widest">{slot.startTime} - {slot.endTime} • {slot.roomOrLink || 'TBA'}</div>
       </div>
       <div className="flex gap-2">
-        <button type="button" onClick={() => setIsEditing(true)} className="p-2 border-2 border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer opacity-0 group-hover:opacity-100"><Edit2 size={16}/></button>
-        <button type="button" onClick={async () => { await deleteTimetableSlot(slot.id) }} className="p-2 border-2 border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer opacity-0 group-hover:opacity-100"><Trash2 size={16}/></button>
+        <button type="button" onClick={() => setIsEditing(true)} className="p-2 border border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer opacity-0 group-hover:opacity-100"><Edit2 size={16}/></button>
+        <button type="button" onClick={async () => { await deleteTimetableSlot(slot.id) }} className="p-2 border border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer opacity-0 group-hover:opacity-100"><Trash2 size={16}/></button>
       </div>
     </div>
   )

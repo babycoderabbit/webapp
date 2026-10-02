@@ -19,26 +19,26 @@ export function DocumentItem({ doc, onDelete, onEdit }: any) {
 
   if (isEditing) {
     return (
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 border-2 border-black rounded-none gap-4 bg-white">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between p-4 border border-black rounded-none gap-4 bg-white">
         <div className="flex-1 w-full">
           <input 
             type="text" 
             value={title} 
             onChange={(e) => setTitle(e.target.value)} 
-            className="border-2 border-black p-2 text-sm font-bold w-full bg-white text-black outline-none"
+            className="border border-black p-2 text-sm font-bold w-full bg-white text-black outline-none"
             autoFocus
           />
         </div>
         <div className="flex gap-2">
-          <button onClick={handleSave} className="p-2 border-2 border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer"><Check size={18} /></button>
-          <button onClick={() => setIsEditing(false)} className="p-2 border-2 border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer"><X size={18} /></button>
+          <button onClick={handleSave} className="p-2 border border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer"><Check size={18} /></button>
+          <button onClick={() => setIsEditing(false)} className="p-2 border border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer"><X size={18} /></button>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="group flex justify-between items-center p-4 border-2 border-black bg-white hover:-translate-y-1 hover:shadow-[4px_4px_0_0_#000000] transition-all rounded-none gap-4">
+    <div className="group flex justify-between items-center p-4 border border-black bg-white hover:-translate-y-1 hover:shadow-lg transition-all rounded-none gap-4">
       <div className="flex flex-col">
         <Link href={`/writing/${doc.id}`} className="font-bold text-black text-sm md:text-base hover:underline">
           {doc.title}
@@ -48,10 +48,10 @@ export function DocumentItem({ doc, onDelete, onEdit }: any) {
         </span>
       </div>
       <div className="flex items-center gap-2">
-        <button onClick={() => setIsEditing(true)} className="p-2 border-2 border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer">
+        <button onClick={() => setIsEditing(true)} className="p-2 border border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer">
           <Edit3 size={16}/>
         </button>
-        <button onClick={() => onDelete(doc.id)} className="p-2 border-2 border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer text-red-600 hover:text-red-600">
+        <button onClick={() => onDelete(doc.id)} className="p-2 border border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer text-red-600 hover:text-red-600">
           <Trash2 size={16}/>
         </button>
       </div>

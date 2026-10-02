@@ -7,14 +7,14 @@ import { HabitItem } from './HabitItem'
 import { Habit, HabitLog } from '@prisma/client'
 
 const HabitList = ({ habits, title, Icon, todayLogs, handleLog, handleDelete, handleEdit }: { habits: Habit[], title: string, Icon: React.ElementType, todayLogs: HabitLog[], handleLog: (id: string, s: string) => void, handleDelete: (id: string) => void, handleEdit: (id: string, t: string, tod: string) => void }) => (
-  <div className="border-4 border-black p-6 bg-white mb-6">
+  <div className="border border-black p-6 bg-white mb-6">
     <div className="flex items-center gap-3 mb-6 border-b-4 border-black pb-4">
       <Icon size={32} />
       <h2 className="text-3xl font-black uppercase tracking-tighter">{title}</h2>
     </div>
     
     {habits.length === 0 ? (
-      <div className="text-black font-bold uppercase tracking-widest text-sm py-8 text-center border-2 border-black border-dashed">No habits assigned</div>
+      <div className="text-black font-bold uppercase tracking-widest text-sm py-8 text-center border border-black border-dashed">No habits assigned</div>
     ) : (
       <div className="space-y-4">
         {habits.map(h => (
@@ -57,7 +57,7 @@ export default async function HabitsPage() {
 
   return (
     <div className="p-4 md:p-8 lg:p-10 space-y-8 max-w-7xl mx-auto font-sans bg-white min-h-screen text-black">
-      <header className="border-4 border-black p-6 md:p-8 bg-white shadow-[8px_8px_0_0_#000000] flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+      <header className="border border-black p-6 md:p-8 bg-white shadow-xl flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
         <div>
           <div className="flex items-center gap-2 font-black tracking-widest uppercase text-xs mb-2">
             <Activity size={16} /> Routine
@@ -67,13 +67,13 @@ export default async function HabitsPage() {
         </div>
         
         <form action={async (formData) => { 'use server'; await createHabit(formData) }} className="w-full md:w-auto flex flex-col sm:flex-row gap-2">
-          <input type="text" name="title" required placeholder="New Habit..." className="bg-white border-4 border-black p-3 font-bold focus:outline-none flex-1 min-w-0" />
-          <select name="timeOfDay" className="bg-white border-4 border-black p-3 font-bold focus:outline-none min-w-0 cursor-pointer">
+          <input type="text" name="title" required placeholder="New Habit..." className="bg-white border border-black p-3 font-bold focus:outline-none flex-1 min-w-0" />
+          <select name="timeOfDay" className="bg-white border border-black p-3 font-bold focus:outline-none min-w-0 cursor-pointer">
             <option value="MORNING">Morning</option>
             <option value="AFTERNOON">Afternoon</option>
             <option value="EVENING">Evening</option>
           </select>
-          <button type="submit" className="bg-black text-white px-6 py-3 font-black uppercase border-4 border-black hover:bg-white hover:text-black transition-colors whitespace-nowrap cursor-pointer">
+          <button type="submit" className="bg-black text-white px-6 py-3 font-black uppercase border border-black hover:bg-white hover:text-black transition-colors whitespace-nowrap cursor-pointer">
             Add
           </button>
         </form>

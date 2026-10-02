@@ -14,14 +14,14 @@ export function QuoteWidget() {
   const [index, setIndex] = useState(0)
 
   return (
-    <div className="relative bg-white border-2 border-black p-8 shadow-[4px_4px_0_0_#000000] group mb-8">
+    <div className="relative bg-white border border-black p-8 shadow-lg group mb-8">
       <div className="flex justify-between items-start mb-6 relative z-10">
         <div className="p-2 text-black">
           <Sparkles size={28} />
         </div>
         <button 
           onClick={() => setIndex((index + 1) % quotes.length)} 
-          className="text-black hover:bg-black hover:text-white transition-colors p-2 border-2 border-transparent hover:border-black cursor-pointer"
+          className="text-black hover:bg-black hover:text-white transition-colors p-2 border border-transparent hover:border-black cursor-pointer"
         >
           <RefreshCw size={24} />
         </button>

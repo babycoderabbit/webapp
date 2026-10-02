@@ -16,19 +16,19 @@ export function MediaItemCard({ item, onDelete, onEdit }: { item: MediaItem, onD
 
   if (isEditing) {
     return (
-      <div className="bg-white border-2 border-black flex flex-col justify-between p-4 aspect-[3/4] rounded-none">
+      <div className="bg-white border border-black flex flex-col justify-between p-4 aspect-[3/4] rounded-none">
         <div className="space-y-3">
           <input 
             type="text" 
             value={title} 
             onChange={(e) => setTitle(e.target.value)} 
-            className="border-2 border-black p-2 text-sm font-bold w-full bg-white text-black outline-none"
+            className="border border-black p-2 text-sm font-bold w-full bg-white text-black outline-none"
             placeholder="Title"
           />
           <select 
             value={status} 
             onChange={(e) => setStatus(e.target.value)}
-            className="border-2 border-black p-2 text-sm font-bold w-full bg-white text-black outline-none"
+            className="border border-black p-2 text-sm font-bold w-full bg-white text-black outline-none"
           >
             <option value="PLANNING">Planning</option>
             <option value="IN_PROGRESS">In Progress</option>
@@ -37,23 +37,23 @@ export function MediaItemCard({ item, onDelete, onEdit }: { item: MediaItem, onD
           </select>
         </div>
         <div className="flex gap-2 justify-end mt-4">
-          <button onClick={handleSave} className="p-2 border-2 border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer"><Check size={16} /></button>
-          <button onClick={() => setIsEditing(false)} className="p-2 border-2 border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer"><X size={16} /></button>
+          <button onClick={handleSave} className="p-2 border border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer"><Check size={16} /></button>
+          <button onClick={() => setIsEditing(false)} className="p-2 border border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer"><X size={16} /></button>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="group bg-white border-2 border-black flex flex-col justify-between p-4 aspect-[3/4] hover:-translate-y-1 hover:shadow-[6px_6px_0_0_#000000] transition-all rounded-none">
+    <div className="group bg-white border border-black flex flex-col justify-between p-4 aspect-[3/4] hover:-translate-y-1 hover:shadow-[6px_6px_0_0_#000000] transition-all rounded-none">
       <div>
         <div className="flex justify-between items-start mb-2">
-          <span className="text-[10px] font-black uppercase tracking-widest px-2 py-1 border-2 border-black bg-white text-black">{item.status}</span>
+          <span className="text-[10px] font-black uppercase tracking-widest px-2 py-1 border border-black bg-white text-black">{item.status}</span>
           <div className="flex gap-1 opacity-0 group-hover:opacity-100 transition-all">
-            <button onClick={() => setIsEditing(true)} className="p-1.5 border-2 border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer">
+            <button onClick={() => setIsEditing(true)} className="p-1.5 border border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer">
               <Edit2 size={14}/>
             </button>
-            <button onClick={() => onDelete(item.id)} className="p-1.5 border-2 border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer text-red-600 hover:text-red-600">
+            <button onClick={() => onDelete(item.id)} className="p-1.5 border border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer text-red-600 hover:text-red-600">
               <Trash2 size={14}/>
             </button>
           </div>

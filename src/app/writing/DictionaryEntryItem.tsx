@@ -18,40 +18,40 @@ export function DictionaryEntryItem({ entry, onDelete, onEdit }: any) {
 
   if (isEditing) {
     return (
-      <div className="flex flex-col gap-2 p-4 border-2 border-black bg-white rounded-none">
+      <div className="flex flex-col gap-2 p-4 border border-black bg-white rounded-none">
         <input 
           type="text" 
           value={word} 
           onChange={(e) => setWord(e.target.value)} 
-          className="border-2 border-black p-2 text-sm font-bold w-full bg-white text-black outline-none"
+          className="border border-black p-2 text-sm font-bold w-full bg-white text-black outline-none"
           placeholder="Word"
         />
         <input 
           type="text" 
           value={meaning} 
           onChange={(e) => setMeaning(e.target.value)} 
-          className="border-2 border-black p-2 text-sm font-bold w-full bg-white text-black outline-none"
+          className="border border-black p-2 text-sm font-bold w-full bg-white text-black outline-none"
           placeholder="Meaning"
         />
         <div className="flex gap-2 justify-end mt-2">
-          <button onClick={handleSave} className="p-2 border-2 border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer"><Check size={18} /></button>
-          <button onClick={() => setIsEditing(false)} className="p-2 border-2 border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer"><X size={18} /></button>
+          <button onClick={handleSave} className="p-2 border border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer"><Check size={18} /></button>
+          <button onClick={() => setIsEditing(false)} className="p-2 border border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer"><X size={18} /></button>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="group flex justify-between items-start p-4 border-2 border-black bg-white hover:-translate-y-1 hover:shadow-[4px_4px_0_0_#000000] transition-all rounded-none gap-4">
+    <div className="group flex justify-between items-start p-4 border border-black bg-white hover:-translate-y-1 hover:shadow-lg transition-all rounded-none gap-4">
       <div className="flex-1">
         <div className="font-bold text-black text-lg tracking-tight uppercase">{entry.word}</div>
         <div className="text-sm text-black/80 font-medium leading-relaxed mt-1">{entry.meaning}</div>
       </div>
       <div className="flex items-center gap-2">
-        <button onClick={() => setIsEditing(true)} className="p-2 border-2 border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer">
+        <button onClick={() => setIsEditing(true)} className="p-2 border border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer">
           <Edit3 size={14}/>
         </button>
-        <button onClick={() => onDelete(entry.id)} className="p-2 border-2 border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer text-red-600 hover:text-red-600">
+        <button onClick={() => onDelete(entry.id)} className="p-2 border border-black bg-white hover:bg-black hover:text-white transition-colors cursor-pointer text-red-600 hover:text-red-600">
           <Trash2 size={14}/>
         </button>
       </div>

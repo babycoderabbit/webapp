@@ -41,7 +41,7 @@ export function MobileNav() {
 
       {/* More Menu Drawer */}
       <div className={cn(
-        "md:hidden fixed bottom-28 left-4 right-4 bg-white border-2 border-black p-4 shadow-[4px_4px_0_0_#000000] z-50 transition-all duration-300 transform origin-bottom",
+        "md:hidden fixed bottom-28 left-4 right-4 bg-white/95 backdrop-blur-lg border border-black/10 p-5 shadow-2xl rounded-[2rem] z-50 transition-all duration-300 transform origin-bottom",
         moreOpen ? "scale-100 opacity-100 translate-y-0" : "scale-95 opacity-0 translate-y-10 pointer-events-none"
       )}>
         <div className="grid grid-cols-2 gap-4 mb-4">
@@ -54,7 +54,7 @@ export function MobileNav() {
                 href={item.href}
                 onClick={() => setMoreOpen(false)}
                 className={cn(
-                  "flex flex-col items-center gap-2 p-4 border-2 border-black transition-all hover:bg-black hover:text-white",
+                  "flex flex-col items-center gap-2 p-4 border border-black/10 rounded-2xl transition-all hover:bg-black/5 hover:border-black/20",
                   isActive ? "bg-black text-white" : "bg-white text-black"
                 )}
               >
@@ -65,15 +65,15 @@ export function MobileNav() {
           })}
         </div>
         
-        <div className="border-t-4 border-black pt-4 mt-2">
-           <Link href="/settings" onClick={() => setMoreOpen(false)} className="flex items-center justify-center gap-2 bg-white text-black hover:bg-black hover:text-white border-2 border-black font-black uppercase text-sm py-3 transition-colors">
+        <div className="border-t border-black/10 pt-4 mt-2">
+           <Link href="/settings" onClick={() => setMoreOpen(false)} className="flex items-center justify-center gap-2 bg-black/5 text-black hover:bg-black/10 border border-transparent rounded-xl font-black uppercase text-sm py-3 transition-colors">
              <span>Settings</span>
            </Link>
         </div>
       </div>
 
       {/* Floating Bottom Nav */}
-      <div className="md:hidden fixed bottom-6 left-4 right-4 bg-white border-2 border-black p-2 flex justify-between items-center shadow-[4px_4px_0_0_#000000] z-50">
+      <div className="md:hidden fixed bottom-6 left-4 right-4 bg-white/95 backdrop-blur-lg border border-black/10 p-2 flex justify-between items-center shadow-2xl rounded-full z-50">
         {mainNav.map(item => {
           const isActive = pathname?.startsWith(item.href)
           const Icon = item.icon
@@ -83,8 +83,8 @@ export function MobileNav() {
               href={item.href} 
               onClick={() => setMoreOpen(false)}
               className={cn(
-                "p-1.5 transition-all duration-300 flex flex-col items-center gap-1 flex-1 border-2 border-transparent min-w-0",
-                isActive ? "text-black border-black bg-black/5" : "text-black hover:bg-black hover:text-white"
+                "py-2 px-1 transition-all duration-300 flex flex-col items-center gap-1 flex-1 min-w-0 rounded-full",
+                isActive ? "text-black bg-black/10" : "text-black/60 hover:text-black hover:bg-black/5"
               )}
             >
               <Icon size={22} className={cn("transition-transform flex-shrink-0", isActive && "scale-110")} />
@@ -98,8 +98,8 @@ export function MobileNav() {
         <button 
           onClick={() => setMoreOpen(!moreOpen)}
           className={cn(
-            "p-1.5 transition-all duration-300 flex flex-col items-center gap-1 flex-1 border-2 border-transparent min-w-0",
-            moreOpen ? "text-black border-black bg-black/5" : "text-black hover:bg-black hover:text-white"
+            "py-2 px-1 transition-all duration-300 flex flex-col items-center gap-1 flex-1 min-w-0 rounded-full",
+            moreOpen ? "text-black bg-black/10" : "text-black/60 hover:text-black hover:bg-black/5"
           )}
         >
           {moreOpen ? <X size={22} className="flex-shrink-0" /> : <Menu size={22} className="flex-shrink-0" />}
