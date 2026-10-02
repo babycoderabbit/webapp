@@ -11,7 +11,7 @@ export function ClockWidget() {
   }, [])
 
   return (
-    <div className="flex flex-col items-end">
+    <div className="flex flex-col items-start md:items-end">
       <div suppressHydrationWarning className="text-4xl md:text-5xl font-black tracking-tighter text-foreground tabular-nums">
         {time.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
       </div>
