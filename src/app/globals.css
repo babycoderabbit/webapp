@@ -1,0 +1,67 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-muted: var(--muted);
+  --color-popover: var(--card);
+
+  --color-zinc-950: var(--card);
+  --color-zinc-900: var(--muted);
+  --color-zinc-800: var(--border);
+  --color-zinc-500: var(--text-muted);
+  --color-zinc-400: var(--text-secondary);
+  --color-zinc-300: var(--text-secondary);
+  --color-zinc-200: var(--fg);
+  --color-zinc-100: var(--fg);
+  --color-black: var(--bg);
+  --color-white: var(--fg);
+  --color-red-500: var(--fg);
+  --color-red-400: var(--fg);
+  --color-red-950: var(--bg);
+  --color-emerald-600: var(--fg);
+  --color-emerald-400: var(--fg);
+  --color-emerald-950: var(--bg);
+}
+
+@layer base {
+  :root {
+    --bg: #ffffff;
+    --fg: #000000;
+    --card: #ffffff;
+    --border: #000000;
+    --primary: #000000;
+    --muted: #ffffff;
+    --text-muted: #000000;
+    --text-secondary: #000000;
+  }
+}
+
+* {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+::placeholder {
+  color: #000000 !important;
+  opacity: 1 !important;
+  -webkit-text-fill-color: #000000 !important;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+.custom-scrollbar:hover::-webkit-scrollbar-thumb {
+  background: var(--text-muted);
+}
