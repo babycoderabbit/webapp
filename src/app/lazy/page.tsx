@@ -60,17 +60,17 @@ export default async function LazyPage() {
         
         <form action={async (formData) => { 'use server'; await addMedia(formData) }} className="w-full md:w-auto bg-background/80 p-3 rounded-2xl border border-border shadow-inner space-y-3">
           <div className="flex gap-2">
-            <input type="text" name="title" required placeholder="Title" className="bg-card border border-border/50 rounded-xl p-2.5 text-sm text-foreground focus:outline-none flex-[2]" />
-            <select name="type" className="bg-card border border-border/50 rounded-xl p-2.5 text-sm text-foreground focus:outline-none flex-1">
+            <input type="text" name="title" required placeholder="Title" className="bg-card border border-border/50 rounded-xl p-2.5 text-sm text-foreground focus:outline-none flex-[2] min-w-0" />
+            <select name="type" className="bg-card border border-border/50 rounded-xl p-2.5 text-sm text-foreground focus:outline-none flex-1 min-w-0">
               <option value="MOVIE">Movie/TV</option>
               <option value="GAME">Game</option>
               <option value="BOOK">Book</option>
             </select>
           </div>
           <div className="flex gap-2">
-             <input type="text" name="genre" placeholder="Genre" className="bg-card border border-border/50 rounded-xl p-2.5 text-xs text-foreground focus:outline-none flex-1" />
-             <input type="number" name="releaseYear" placeholder="Year" className="bg-card border border-border/50 rounded-xl p-2.5 text-xs text-foreground focus:outline-none w-20" />
-             <button type="submit" className="bg-primary text-background px-4 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider hover:opacity-90 transition-all flex-1">Save</button>
+             <input type="text" name="genre" placeholder="Genre" className="bg-card border border-border/50 rounded-xl p-2.5 text-xs text-foreground focus:outline-none flex-1 min-w-0" />
+             <input type="number" name="releaseYear" placeholder="Year" className="bg-card border border-border/50 rounded-xl p-2.5 text-xs text-foreground focus:outline-none w-16 min-w-0" />
+             <button type="submit" className="bg-primary text-background px-3 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider hover:opacity-90 transition-all">Save</button>
           </div>
         </form>
       </header>

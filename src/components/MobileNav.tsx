@@ -83,12 +83,12 @@ export function MobileNav() {
               href={item.href} 
               onClick={() => setMoreOpen(false)}
               className={cn(
-                "p-3 transition-all duration-300 flex flex-col items-center gap-1 flex-1 border-2 border-transparent",
+                "p-1.5 transition-all duration-300 flex flex-col items-center gap-1 flex-1 border-2 border-transparent min-w-0",
                 isActive ? "text-black border-black bg-black/5" : "text-black hover:bg-black hover:text-white"
               )}
             >
-              <Icon size={24} className={cn("transition-transform", isActive && "scale-110")} />
-              <span className={cn("text-[9px] font-black uppercase tracking-widest transition-all", isActive ? "opacity-100" : "opacity-0 translate-y-1")}>
+              <Icon size={22} className={cn("transition-transform flex-shrink-0", isActive && "scale-110")} />
+              <span className={cn("text-[9px] font-black uppercase tracking-widest transition-all truncate w-full text-center", isActive ? "opacity-100" : "opacity-0 translate-y-1")}>
                 {item.name}
               </span>
             </Link>
@@ -98,12 +98,12 @@ export function MobileNav() {
         <button 
           onClick={() => setMoreOpen(!moreOpen)}
           className={cn(
-            "p-3 transition-all duration-300 flex flex-col items-center gap-1 flex-1 border-2 border-transparent",
+            "p-1.5 transition-all duration-300 flex flex-col items-center gap-1 flex-1 border-2 border-transparent min-w-0",
             moreOpen ? "text-black border-black bg-black/5" : "text-black hover:bg-black hover:text-white"
           )}
         >
-          {moreOpen ? <X size={24} /> : <Menu size={24} />}
-          <span className={cn("text-[9px] font-black uppercase tracking-widest transition-all", moreOpen ? "opacity-100" : "opacity-0 translate-y-1")}>
+          {moreOpen ? <X size={22} className="flex-shrink-0" /> : <Menu size={22} className="flex-shrink-0" />}
+          <span className={cn("text-[9px] font-black uppercase tracking-widest transition-all truncate w-full text-center", moreOpen ? "opacity-100" : "opacity-0 translate-y-1")}>
             {moreOpen ? 'Close' : 'More'}
           </span>
         </button>
