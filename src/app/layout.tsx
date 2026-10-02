@@ -5,6 +5,7 @@ import { Sidebar } from '@/components/Sidebar'
 import { MobileNav } from '@/components/MobileNav'
 import { auth } from '@/auth'
 import prisma from '@/lib/prisma'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -70,6 +71,7 @@ export default async function RootLayout({
           {children}
         </main>
         <MobileNav />
+        <SpeedInsights />
       </body>
     </html>
   )
