@@ -15,6 +15,8 @@ export function MobileNav() {
   const pathname = usePathname()
   const [moreOpen, setMoreOpen] = useState(false)
 
+  if (pathname === '/login' || pathname === '/register') return null;
+
   const mainNav = [
     { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
     { name: 'Habits', href: '/habits', icon: CheckSquare },
