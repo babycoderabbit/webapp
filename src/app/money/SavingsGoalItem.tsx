@@ -58,8 +58,9 @@ export function SavingsGoalItem({ goal, onDelete, onEdit, onAddFunds }: any) {
           <button onClick={() => onDelete(goal.id)} className="p-2 border border-black hover:bg-black hover:text-white transition-colors cursor-pointer"><Trash2 size={16}/></button>
         </div>
       </div>
-      <div className="flex justify-between items-center font-bold text-sm uppercase tracking-widest mt-2">
+      <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center font-bold text-sm uppercase tracking-widest mt-2 gap-1 sm:gap-4">
         <span>{formatNaira(goal.currentAmount)} saved</span>
+        <span className="text-blue-600 dark:text-blue-400">{formatNaira(Math.max(0, goal.targetAmount - goal.currentAmount))} remaining</span>
         <span>{formatNaira(goal.targetAmount)} goal</span>
       </div>
       <div className="w-full border border-black h-6 bg-white relative">

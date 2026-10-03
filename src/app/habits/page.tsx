@@ -2,7 +2,8 @@ import prisma from '@/lib/prisma'
 import { auth } from '@/auth'
 import { redirect } from 'next/navigation'
 import { logHabit, deleteHabit, createHabit, updateHabit } from '@/app/actions/habits'
-import { Sun, Sunset, Moon, Activity } from 'lucide-react'
+import { Sun, Sunset, Moon, Activity, Target } from 'lucide-react'
+import { ReminderToggle } from '@/components/ReminderToggle'
 import { HabitItem } from './HabitItem'
 import { Habit, HabitLog } from '@prisma/client'
 
@@ -42,6 +43,7 @@ export default async function HabitsPage() {
   }
 
   const habits = await prisma.habit.findMany({ where: { userId } })
+  const tasks = await prisma.task.findMany({ where: { userId, status: { not: 'COMPLETED' } } })
   
   const today = new Date().toISOString().split('T')[0]
   const todayLogs = await prisma.habitLog.findMany({
@@ -66,7 +68,12 @@ export default async function HabitsPage() {
           <p className="font-bold mt-2 uppercase tracking-widest text-sm">Build discipline. Stay hard.</p>
         </div>
         
-        <form action={async (formData) => { 'use server'; await createHabit(formData) }} className="w-full md:w-auto flex flex-col sm:flex-row gap-2">
+        <div className="w-full md:w-auto flex flex-col gap-4">
+          <div className="flex flex-col sm:flex-row justify-start md:justify-end gap-2">
+            <a href="/dashboard#tasks" className="p-2 border border-black bg-black text-white hover:bg-white hover:text-black transition-colors flex items-center justify-center gap-2 font-bold uppercase tracking-widest text-xs"><Target size={16}/> Go To Tasks</a>
+            <ReminderToggle tasks={tasks} habits={habits} />
+          </div>
+          <form action={async (formData) => { 'use server'; await createHabit(formData) }} className="w-full flex flex-col sm:flex-row gap-2">
           <input type="text" name="title" required placeholder="New Habit..." className="bg-white border border-black p-3 font-bold focus:outline-none flex-1 min-w-0" />
           <select name="timeOfDay" className="bg-white border border-black p-3 font-bold focus:outline-none min-w-0 cursor-pointer">
             <option value="MORNING">Morning</option>
@@ -76,7 +83,8 @@ export default async function HabitsPage() {
           <button type="submit" className="bg-black text-white px-6 py-3 font-black uppercase border border-black hover:bg-white hover:text-black transition-colors whitespace-nowrap cursor-pointer">
             Add
           </button>
-        </form>
+          </form>
+        </div>
       </header>
 
       <div className="flex flex-col gap-8">

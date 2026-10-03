@@ -6,6 +6,7 @@ import { addMedia, deleteMedia, updateMediaItem } from '@/app/actions/lazy'
 import { Film, Gamepad2, Book, Tv } from 'lucide-react'
 import { MediaItemCard } from './MediaItemCard'
 import { MediaItem } from '@prisma/client'
+import { SubmitButton } from '@/components/SubmitButton'
 
 const MediaSection = ({ title, items, Icon }: { title: string, items: MediaItem[], Icon: React.ElementType }) => (
   <div className="bg-card/40 backdrop-blur-xl border border-border rounded-3xl p-6 shadow-xl mb-8">
@@ -19,7 +20,7 @@ const MediaSection = ({ title, items, Icon }: { title: string, items: MediaItem[
     {items.length === 0 ? (
       <div className="text-muted text-sm text-center py-8 bg-background/30 rounded-2xl border border-border/50">No items added to backlog.</div>
     ) : (
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {items.map(m => (
           <MediaItemCard 
             key={m.id} 
@@ -70,7 +71,7 @@ export default async function LazyPage() {
           <div className="flex gap-2">
              <input type="text" name="genre" placeholder="Genre" className="bg-card border border-border/50 rounded-xl p-2.5 text-xs text-foreground focus:outline-none flex-1 min-w-0" />
              <input type="number" name="releaseYear" placeholder="Year" className="bg-card border border-border/50 rounded-xl p-2.5 text-xs text-foreground focus:outline-none w-16 min-w-0" />
-             <button type="submit" className="bg-primary text-background px-3 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider hover:opacity-90 transition-all">Save</button>
+             <SubmitButton className="bg-primary text-background px-3 py-2.5 rounded-xl font-bold text-xs uppercase tracking-wider hover:opacity-90 transition-all">Save</SubmitButton>
           </div>
         </form>
       </header>

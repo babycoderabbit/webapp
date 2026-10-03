@@ -67,7 +67,7 @@ export default async function DashboardPage() {
           <QuoteWidget />
           
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-            <div className="border border-black p-6 shadow-lg bg-white">
+            <div id="tasks" className="border border-black p-6 shadow-lg bg-white">
               <div className="flex items-center gap-3 mb-6 border-b-4 border-black pb-4">
                 <Target size={28} />
                 <h3 className="text-2xl font-black tracking-tighter uppercase">Active Tasks</h3>

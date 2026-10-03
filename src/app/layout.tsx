@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
 import { Sidebar } from '@/components/Sidebar'
+import { GlobalAntiDoubleTap } from '@/components/GlobalAntiDoubleTap'
 import { MobileNav } from '@/components/MobileNav'
 import { auth } from '@/auth'
 import prisma from '@/lib/prisma'
@@ -65,6 +66,7 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${inter.className} bg-white text-black antialiased flex min-h-screen`} suppressHydrationWarning>
+        <GlobalAntiDoubleTap />
         <Sidebar />
         <main className="flex-1 pb-24 md:pb-0 h-screen overflow-y-auto overflow-x-hidden">
           {children}
